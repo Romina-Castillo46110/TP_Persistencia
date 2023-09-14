@@ -3,6 +3,8 @@ package entidades;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import Enumeraciones.Tipo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,8 +34,8 @@ public class Producto extends EntidadBase {
     private int stockActual;
     @Column(name = "StockMinimo")
     private int stockMinimo;
-    @Column(name = "UnidadVendida")
-    private String unidadVendida;
+    @Column(name = "UnidadMendida")
+    private String unidadMedida;
     @Column(name = "Receta")
     private String receta;
     private Tipo tipo;
@@ -86,12 +88,12 @@ public class Producto extends EntidadBase {
         this.stockMinimo = stockMinimo;
     }
 
-    public String getUnidadVendida() {
-        return unidadVendida;
+    public String getUnidadMedida() {
+        return unidadMedida;
     }
 
-    public void setUnidadVendida(String unidadVendida) {
-        this.unidadVendida = unidadVendida;
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
     }
 
     public String getReceta() {

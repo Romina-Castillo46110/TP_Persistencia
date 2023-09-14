@@ -6,12 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
+
+import Enumeraciones.Estado;
+import Enumeraciones.TipoEnvio;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,6 +48,10 @@ public class Pedido extends EntidadBase {
     public void agregarDetallePedido(DetallePedido det) {
     	detalle.add(det);
     }
+    
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "factura-id")
+    private Factura factura;
 
     public Date getFecha() {
         return fecha;

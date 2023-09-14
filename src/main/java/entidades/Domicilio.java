@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "Domicilio")
 public class Domicilio extends EntidadBase {
@@ -25,6 +24,12 @@ public class Domicilio extends EntidadBase {
     private String numero;
     @Column(name = "Localidad")
     private String localidad;
+    
+    public Domicilio(String call, String num, String loc) {
+    	this.calle = call;
+    	this.numero = num;
+    	this.localidad = loc;
+    }
 
     public String getCalle() {
         return calle;

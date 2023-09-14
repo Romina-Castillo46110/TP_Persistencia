@@ -1,5 +1,10 @@
 package Repositorios;
 
-public interface TipoRepository {
+import org.springframework.stereotype.Repository;
+
+import entidades.Tipo;
+
+@Repository
+public interface TipoRepository extends EntidadBaseRepository<Tipo,Long>{
 
 }

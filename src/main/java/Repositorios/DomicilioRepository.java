@@ -1,5 +1,10 @@
 package Repositorios;
 
-public interface DomicilioRepository {
+import org.springframework.stereotype.Repository;
+
+import entidades.Domicilio;
+
+@Repository
+public interface DomicilioRepository extends EntidadBaseRepository<Domicilio,Long>{
 
 }

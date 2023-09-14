@@ -35,6 +35,17 @@ public class Rubro extends EntidadBase {
     @Builder.Default
     private List<Producto> productos = new ArrayList<>();
     
+    public void mostrarProductos() {
+        System.out.println("Los productos de este rubro son: ");
+        for (Producto producto : productos) {
+            System.out.println("Denominacion: " + producto.getDenominacion() + ", Receta: " + producto.getReceta()
+                    + ", Unidad Medida: " + producto.getUnidadMedida() + ", Precio Compra: " + producto.getPrecioCompra()
+                    + ", Precio Venta: " + producto.getPrecioVenta() + ", Stock Actual: " + producto.getStockActual()
+            + ", Stock Minimo: " + producto.getStockMinimo() + ", Tiempo Estimado Cocina: " + producto.getTiempoEstimadoCocina()
+            + ", Tipo: " + producto.getTipo());
+        }
+    }
+    
     public void agregarProducto(Producto prod) {
     	productos.add(prod);
     }

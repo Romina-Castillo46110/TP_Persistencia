@@ -1,5 +1,9 @@
 package Repositorios;
 
-public interface DetallePedidoRepository {
+import org.springframework.stereotype.Repository;
+
+import entidades.DetallePedido;
+@Repository
+public interface DetallePedidoRepository extends EntidadBaseRepository<DetallePedido,Long> {
 
 }

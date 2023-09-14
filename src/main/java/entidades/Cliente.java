@@ -36,6 +36,13 @@ public class Cliente extends EntidadBase {
     @Column(name = "Email")
     private String email;
     
+    public Cliente(String nom, String apell, String tel, String mail) {
+    	this.nombre = nom;
+    	this.apellido = apell;
+    	this.telefono = tel;
+    	this.email = mail;
+    }
+    
     //relacion cliente con pedido: OneToMany
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "Cliente_fk")
@@ -53,6 +60,24 @@ public class Cliente extends EntidadBase {
     
     public void agregarDomicilio(Domicilio Dom) {
     	domicilios.add(Dom);
+    }
+    public void mostrarDomicilios() {
+        System.out.println("Domicilios de " + nombre + " " + apellido + ":");
+        for (Domicilio domicilio : domicilios) {
+            System.out.println("Calle: " + domicilio.getCalle() + ", Número: " + domicilio.getNumero());
+        }
+    }
+
+    public void mostrarPedidos() {
+        System.out.println("Pedidos de " + nombre + " " + apellido + ":");
+        for (Pedido pedido : pedidos) {
+            System.out.println("Fecha: " + pedido.getFecha() + ", Total: " + pedido.getTotal());
+            int counter = 0;
+            for (DetallePedido detalle: pedido.getDetallePedido()){
+                counter += 1;
+                System.out.println("Producto "+counter+": "+detalle.getProducto().getDenominacion()+"  cantidad: "+detalle.getCantidad()+"  subtotal: "+detalle.getSubtotal());
+            }
+        }
     }
     
     public String getNombre() {
