@@ -45,7 +45,10 @@ public class Pedido extends EntidadBase {
     @Builder.Default
     private List<DetallePedido> detalle = new ArrayList<>();
     
-    public void agregarDetallePedido(DetallePedido det) {
+    public List<DetallePedido> getDetallePedido(){
+    	return detalle;
+    }
+    public void agregarDetallePedido(DetallePedido det){
     	detalle.add(det);
     }
     
@@ -76,4 +79,6 @@ public class Pedido extends EntidadBase {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+
+	
 }
