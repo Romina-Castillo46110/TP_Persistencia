@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "Producto")
 
@@ -34,12 +33,24 @@ public class Producto extends EntidadBase {
     private int stockActual;
     @Column(name = "StockMinimo")
     private int stockMinimo;
-    @Column(name = "UnidadMendida")
+    @Column(name = "UnidadMedida")
     private String unidadMedida;
     @Column(name = "Receta")
     private String receta;
     private Tipo tipo;
 
+    public Producto(int tiempoEstimadoCocina,String denominacion, double precioVenta, double precioCompra,int stockActual, int stockMinimo, String unidadMedida, String receta, Tipo tipo ){
+        this.tiempoEstimadoCocina = tiempoEstimadoCocina;
+        this.denominacion = denominacion;
+        this.precioVenta = precioVenta;
+        this.precioCompra = precioCompra;
+        this.stockActual = stockActual;
+        this.stockMinimo = stockMinimo;
+        this.unidadMedida = unidadMedida;
+        this.receta = receta;
+        this.tipo = tipo;
+
+    }
     public int getTiempoEstimadoCocina() {
         return tiempoEstimadoCocina;
     }

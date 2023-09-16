@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "DetallePedido")
 public class DetallePedido extends EntidadBase {
@@ -31,6 +30,13 @@ public class DetallePedido extends EntidadBase {
     @JoinColumn(name = "fk_producto")
     private Producto producto;
 
+    public DetallePedido(int cant,double subt, Producto product){
+        this.cantidad = cant;
+        this.subtotal = subt;
+        this.producto = product;
+
+
+    }
     public Producto getProducto() {
         return producto;
     }

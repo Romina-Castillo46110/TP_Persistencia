@@ -33,11 +33,20 @@ public class Factura extends EntidadBase {
     private FormaPago formaPago;
     @Column(name = "Total")
     private int total;
-    
+
     @OneToOne
     @JoinColumn(name = "fk_pedido", unique = true)
     private Pedido pedido;
 
+    public Factura (int num,Date fech,double desc, int total, FormaPago formP, Pedido ped){
+        this.numero = num;
+        this.fecha = fech;
+        this.descuento = desc;
+        this.total = total;
+        this.formaPago = formP;
+        this.pedido = ped;
+
+    }
     public int getNumero() {
         return numero;
     }

@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "Cliente")
 
@@ -35,20 +34,21 @@ public class Cliente extends EntidadBase {
     private String telefono;
     @Column(name = "Email")
     private String email;
-    
-    public Cliente(String nom, String apell, String tel, String mail) {
-    	this.nombre = nom;
-    	this.apellido = apell;
-    	this.telefono = tel;
-    	this.email = mail;
+
+    public Cliente(String nombre, String apellido, String telefono, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
     }
+
     
     //relacion cliente con pedido: OneToMany
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "Cliente_fk")
     @Builder.Default
     private List<Pedido> pedidos = new ArrayList<>();
-    
+
     public void agregarPedido(Pedido Ped) {
     	pedidos.add(Ped);
     }
@@ -57,7 +57,8 @@ public class Cliente extends EntidadBase {
     @JoinColumn(name = "Cliente_fk")
     @Builder.Default
     private List<Domicilio> domicilios = new ArrayList<>();
-    
+
+
     public void agregarDomicilio(Domicilio Dom) {
     	domicilios.add(Dom);
     }
@@ -68,6 +69,14 @@ public class Cliente extends EntidadBase {
         }
     }
 
+    public Cliente(String nom, String apell, String tel, String mail, List<Pedido> pedidos,List<Domicilio> domicilios) {
+        this.nombre = nom;
+        this.apellido = apell;
+        this.telefono = tel;
+        this.email = mail;
+        this.domicilios = domicilios;
+        this.pedidos = pedidos;
+    }
     public void mostrarPedidos() {
         System.out.println("Pedidos de " + nombre + " " + apellido + ":");
         for (Pedido pedido : pedidos) {

@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Table(name = "Rubro")
 public class Rubro extends EntidadBase {
@@ -34,7 +33,11 @@ public class Rubro extends EntidadBase {
     @JoinColumn(name = "Rubro_fk")
     @Builder.Default
     private List<Producto> productos = new ArrayList<>();
-    
+
+    public Rubro(String denominacion,List<Producto> productos) {
+        this.denominacion = denominacion;
+        this.productos = productos;
+    }
     public void mostrarProductos() {
         System.out.println("Los productos de este rubro son: ");
         for (Producto producto : productos) {

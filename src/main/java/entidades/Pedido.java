@@ -8,10 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 import org.hibernate.annotations.Cache;
 
 import Enumeraciones.Estado;
@@ -20,6 +18,7 @@ import Enumeraciones.TipoEnvio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
@@ -48,8 +47,17 @@ public class Pedido extends EntidadBase {
     public List<DetallePedido> getDetallePedido(){
     	return detalle;
     }
+
+    public Pedido(Date fech, double total, Estado est, TipoEnvio tipoEnvio,List<DetallePedido> detalle) {
+        this.fecha = fech;
+        this.total = total;
+        this.estado = est;
+        this.tipoEnvio = tipoEnvio;
+        this.detalle = detalle;
+    }
     public void agregarDetallePedido(DetallePedido det){
-    	detalle.add(det);
+
+        detalle.add(det);
     }
     
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
